@@ -1,11 +1,60 @@
+import java.io.PrintStream;
+import java.util.Scanner;
+
+
+
 public class StringProblems {
-    public static void main(String[] args) throws Exception {
-        String[] strings = { "Helhkjhjksgdfhgkho", "abcdefghijklmno", "a", "bb", "games" };
-        for (String string : strings) {
-            // System.out.println(isUnique(string));
+    PrintStream Out = System.out;
+    Scanner In = new Scanner(System.in);
+
+    public StringProblems(String[] args) throws Exception {
+        Out.println("Enter Q at anytime to quit.");
+        String prompt = "Enter 1 for Arrays and Strings:";
+        Out.print(prompt);
+        String input = In.nextLine();
+        while (input != "Q") {
+            Out.println(prompt);
+            switch (input) {
+                case "1":
+                    arraysAndStrings();
+                    break;
+            
+                default:
+                    break;
+            }
         }
-        // System.out.println(checkPermutation("cat", "tac"));
-        System.out.println(palindromePermutation("tat  "));
+    }
+    
+    void arraysAndStrings() {
+        String prompt = "isUnique : 1\n checkPermutation : 2\n palindromePermutation : 3";
+        Out.println(prompt);
+        String input = In.nextLine();
+        while (input != "q") {
+            switch (input) {
+                case "1":
+                    Out.println("Determines if a string has all unique characters\nEnter a string:");
+                    String s = In.nextLine();
+                    Out.println(isUnique(s));
+                    break;
+                case "2":
+                    Out.println("Decides if one is a permutation of the other.\nString 1:");
+                    String permOne = In.nextLine();
+                    Out.println("String 2:");
+                    String permTwo = In.nextLine();
+                    Out.println(checkPermutation(permOne, permTwo));
+                    break;
+                case "3":
+                    Out.println("Determines if a string is the permutation of a palindrome\nEnter a string:");
+                    String pp = In.nextLine();
+                    Out.println(palindromePermutation(pp));
+                    break;
+
+                default:
+                    break;
+            }
+            Out.println(prompt);
+            input = In.nextLine();
+        }
     }
 
     /**
